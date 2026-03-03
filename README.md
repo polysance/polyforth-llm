@@ -2,6 +2,8 @@
 
 A minimal RAG assistant for polyForth (or any language) backed by a single `.pdf` or `.docx` knowledge source.
 
+Implementation checklist: see [IMPLEMENTATION.md](IMPLEMENTATION.md).
+
 ## What this repo now does
 
 1. Extracts text from a PDF or DOCX.
@@ -18,6 +20,14 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
+```
+
+### 1.5) Slow internet/offline prep (recommended)
+
+Run once while online to cache embeddings model locally:
+
+```bash
+python scripts/download_embedding_model.py
 ```
 
 ### 2) Add your source document
@@ -51,6 +61,7 @@ By default the app uses an OpenAI-compatible API client. Configure in `.env`:
 - Starting with one source document is fine for Q&A.
 - For stronger code generation/debugging, add examples, tests, and compiler/tool feedback over time.
 - DOCX with headings/TOC is preferred because section-aware chunking improves retrieval relevance.
+- Default embedding model path is local: `models/all-MiniLM-L6-v2`.
 
 ## Host computer specs
 
@@ -58,6 +69,7 @@ By default the app uses an OpenAI-compatible API client. Configure in `.env`:
 * ASUS Prime A520M-K Motherboard Socket AM4
 * Corsair Vengeance LPX 64GB (2x32GB) DDR4 3200MHz C16
 * Intenso Internal M.2 SSD SATA III Top, 512 GB, 520 MB/s
+* Debian Linux with KDE Plasma desktop
 
 ## Local model profile
 

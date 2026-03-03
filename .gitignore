@@ -7,3 +7,5 @@ index/*
 
 data/.gitkeep
 
+models/*
+!models/.gitkeep
