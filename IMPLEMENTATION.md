@@ -68,6 +68,57 @@ Optional but useful on KDE desktop:
 sudo apt install -y libopenblas-dev
 ```
 
+## Hardware bring-up checklist (before full software rollout)
+
+1. Cooler mechanical check:
+   - Heatsink firmly mounted to AM4 bracket/backplate.
+   - Fan clips fully seated in both fan corner grooves and heatsink fin notches.
+   - Fan cannot shift or detach with light hand pressure.
+2. Thermal paste check:
+   - Fresh paste, even pressure, no visible pump-out at edges.
+3. BIOS check:
+   - CPU fan detected.
+   - PWM fan curve enabled.
+4. Debian sensor/stress check:
+
+```bash
+sudo apt update
+sudo apt install -y lm-sensors stress-ng
+sensors
+stress-ng --cpu 16 --timeout 120s
+sensors
+```
+
+Pass/fail targets for Ryzen 9 5950X with air cooling:
+
+1. Idle (after a few minutes): typically around 40C to 60C depending on room temp.
+2. Short all-core stress: should ramp but remain stable without thermal shutdown.
+3. No fan detachment, scraping, or abnormal vibration noise under load.
+
+If the fan mount is unstable, stop and fix mechanics before running indexing/model workloads.
+
+## Custom clip guidance (DIY)
+
+Recommendation:
+
+1. Do not rely on soldered wire loops as the primary fan retention method.
+2. Prefer proper replacement wire clips for the exact cooler model from the manufacturer.
+
+If you still prototype custom retention:
+
+1. Use spring-steel style tension clips or a rigid printed bracket rated for heat.
+2. Keep all metal clear of motherboard traces, VRM heatsinks, and fan blades.
+3. Add a secondary tether so a failed clip cannot drop the fan into components.
+4. Test at low RPM first, then full RPM while monitoring vibration and temperatures.
+5. Do not route or solder anything that can short the fan header or motherboard.
+
+About using two Slim Silent Fan 8 units:
+
+1. Electrically possible only if fan header current limits are respected.
+2. Use a proper PWM splitter/hub instead of hand-soldered power joins.
+3. Small 80mm slim fans usually increase noise and may not improve tower-cooler pressure profile.
+4. A single well-mounted 120mm tower fan is usually better for this cooler class.
+
 ## Slow internet strategy (recommended)
 
 Do one online setup pass, then operate mostly offline.
