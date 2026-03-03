@@ -58,3 +58,31 @@ By default the app uses an OpenAI-compatible API client. Configure in `.env`:
 * ASUS Prime A520M-K Motherboard Socket AM4
 * Corsair Vengeance LPX 64GB (2x32GB) DDR4 3200MHz C16
 * Intenso Internal M.2 SSD SATA III Top, 512 GB, 520 MB/s
+
+## Local model profile
+
+### Recommendation for current setup (no discrete GPU listed)
+
+Use this architecture now:
+
+1. Keep retrieval local (current FAISS + sentence-transformers setup).
+2. Use a smaller local instruct/code model (quantized 7B to 16B class) for generation.
+3. Prefer moderate context windows for speed/latency.
+
+Suggested starting model class:
+
+- DeepSeek-Coder-V2-Lite (quantized) or a comparable 7B to 14B code-instruct model.
+
+Not recommended on current setup:
+
+- 30B-class code models for interactive usage, because CPU-only latency will usually be too high.
+
+### Upgrade path
+
+1. Storage first: move to 1TB to 2TB NVMe (model files and cache grow quickly).
+2. Then GPU: 24GB VRAM minimum for practical local coding assistants, 48GB+ preferred for larger models and longer contexts.
+
+### Practical deployment split
+
+- Best quality now: local RAG + hosted LLM API.
+- Best fully-local now: local RAG + quantized 7B to 16B model.
