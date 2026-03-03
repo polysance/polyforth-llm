@@ -7,6 +7,7 @@ Teaching mode docs: [teaching](TEACHING_README.md) and [implementation-teaching]
 Project roadmap: [roadmap](docs/ROADMAP.md).
 Teaching benchmark: [benchmark-v1](evaluation/teaching-benchmark.md).
 Env presets: [profiles](profiles/README.md).
+Current strategy and forward execution order: see top of [implementation-agent](IMPLEMENTATION.md).
 
 ## What this repo now does
 

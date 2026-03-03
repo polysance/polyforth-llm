@@ -2,6 +2,39 @@
 
 This guide defines the next steps after your host computer is ready.
 
+## Decisions log (current)
+
+1. Cooling direction:
+   - Do not rely on DIY wire clip retention as primary mounting.
+   - Prefer a no-clip CPU cooling path (240mm AIO) for reliability and lower build risk.
+2. Inference strategy:
+   - Use local RAG + hosted LLM as the default operating mode.
+   - Use local-lite inference only as fallback on constrained hardware.
+3. Storage strategy:
+   - Continue with current 512GB SSD for now.
+   - Avoid keeping multiple large local model variants.
+   - Upgrade to 1TB to 2TB NVMe when market/pricing is favorable.
+4. Project focus:
+   - Prioritize polyForth teaching quality over heavy autonomous coding.
+
+## Forward path (execution order)
+
+1. Stabilize hardware:
+   - Finalize CPU cooling installation.
+   - Run thermal checks before long workloads.
+2. Lock software baseline:
+   - Use `profiles/.env.teaching.example` as initial profile.
+   - Build index and validate retrieval quality.
+3. Operate in teaching mode:
+   - Use `scripts/teaching_chat.py` as primary interface.
+   - Run periodic quizzes and lesson flows.
+4. Measure quality:
+   - Use `evaluation/teaching-benchmark.md`.
+   - Record benchmark results after major prompt/model/source changes.
+5. Scale later:
+   - First storage upgrade, then GPU upgrade.
+   - Re-evaluate more local inference only after those upgrades.
+
 ## Hardware guidance first
 
 Current host configuration:
