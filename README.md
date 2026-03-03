@@ -1,10 +1,10 @@
 # polyforth-llm
 
-A minimal RAG assistant for polyForth (or any language) backed by a single PDF knowledge source.
+A minimal RAG assistant for polyForth (or any language) backed by a single `.pdf` or `.docx` knowledge source.
 
 ## What this repo now does
 
-1. Extracts text from a PDF.
+1. Extracts text from a PDF or DOCX.
 2. Chunks and embeds the text.
 3. Builds a local FAISS index.
 4. Runs a chat CLI that retrieves relevant chunks and asks an LLM to answer with citations.
@@ -20,9 +20,9 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
-### 2) Add your PDF
+### 2) Add your source document
 
-Put your language reference at `data/knowledge.pdf` (or set `PDF_PATH` in `.env`).
+Default is `data/polyforth-llm.docx` (set `SOURCE_PATH` in `.env` if different).
 
 ### 3) Build the index
 
@@ -48,5 +48,6 @@ By default the app uses an OpenAI-compatible API client. Configure in `.env`:
 
 ## Notes
 
-- Starting with one PDF is fine for Q&A.
+- Starting with one source document is fine for Q&A.
 - For stronger code generation/debugging, add examples, tests, and compiler/tool feedback over time.
+- DOCX with headings/TOC is preferred because section-aware chunking improves retrieval relevance.

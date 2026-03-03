@@ -2,17 +2,19 @@ from __future__ import annotations
 
 from polyforth_llm.config import load_settings
 from polyforth_llm.llm import LLMClient
-from polyforth_llm.retriever import Retriever
+from polyforth_llm.retriever import RetrievedChunk, Retriever
 
 
-def _build_prompt(question: str, contexts: list[tuple[int, str]]) -> str:
-    context_block = "\n\n".join([f"[p{page}] {text}" for page, text in contexts])
+def _build_prompt(question: str, contexts: list[RetrievedChunk]) -> str:
+    context_block = "\n\n".join(
+        [f"[{c.source}] ({c.heading}) {c.text}" for c in contexts]
+    )
     return (
         "Answer the question using the context below.\n"
         "Rules:\n"
         "1) Prefer context facts over prior knowledge.\n"
         "2) If context is insufficient, explicitly say what is missing.\n"
-        "3) Cite supporting statements with [pX] page tags.\n\n"
+        "3) Cite supporting statements with [source] tags exactly as shown.\n\n"
         f"Context:\n{context_block}\n\n"
         f"Question:\n{question}\n"
     )
@@ -32,8 +34,7 @@ def run_chat() -> None:
             break
 
         chunks = retriever.search(question)
-        contexts = [(c.page, c.text) for c in chunks]
-        prompt = _build_prompt(question, contexts)
+        prompt = _build_prompt(question, chunks)
 
         answer = llm.complete(prompt)
         print("\n" + answer)

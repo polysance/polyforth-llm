@@ -12,7 +12,8 @@ from polyforth_llm.config import Settings
 
 @dataclass
 class RetrievedChunk:
-    page: int
+    source: str
+    heading: str
     text: str
     score: float
 
@@ -37,6 +38,11 @@ class Retriever:
                 continue
             chunk = self.chunks[idx]
             out.append(
-                RetrievedChunk(page=int(chunk["page"]), text=str(chunk["text"]), score=float(score))
+                RetrievedChunk(
+                    source=str(chunk["source"]),
+                    heading=str(chunk.get("heading", "")),
+                    text=str(chunk["text"]),
+                    score=float(score),
+                )
             )
         return out
