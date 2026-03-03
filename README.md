@@ -70,6 +70,7 @@ By default the app uses an OpenAI-compatible API client. Configure in `.env`:
 * Corsair Vengeance LPX 64GB (2x32GB) DDR4 3200MHz C16
 * Intenso Internal M.2 SSD SATA III Top, 512 GB, 520 MB/s
 * Debian Linux with KDE Plasma desktop
+* XFX Speedster SWFT105 Radeon RX 6400 Gaming Graphics Card with 4GB GDDR6, AMD RDNA™ 2 (RX-64XL4SFG2)
 
 ## Local model profile
 
