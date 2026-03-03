@@ -8,6 +8,7 @@ A minimal RAG assistant for polyForth (or any language) backed by a single `.pdf
 * Teaching benchmark: [benchmark-v1](evaluation/teaching-benchmark.md).
 * Env presets: [profiles](profiles/README.md).
 * Current strategy and forward execution order: see top of [implementation-agent](IMPLEMENTATION.md).
+* Public testing deploy guide: [cloudflare-tunnel](DEPLOYMENT_CLOUDFLARE.md).
 
 ## What this repo now does
 
@@ -52,6 +53,17 @@ python scripts/chat.py
 ```
 
 Type `exit` to quit.
+
+### 5) API (for web testing)
+
+```bash
+python scripts/serve_api.py
+```
+
+Endpoints:
+
+- `GET /health`
+- `POST /teach` (optional `X-API-Key` if `APP_API_KEY` is set)
 
 ## Model configuration
 
