@@ -72,6 +72,9 @@ By default the app uses an OpenAI-compatible API client. Configure in `.env`:
 * Intenso Internal M.2 SSD SATA III Top, 512 GB, 520 MB/s
 * Debian Linux with KDE Plasma desktop
 * XFX Speedster SWFT105 Radeon RX 6400 Gaming Graphics Card with 4GB GDDR6, AMD RDNA™ 2 (RX-64XL4SFG2)
+* Corsair 4000D Airflow Tempered Glass Mid-Tower ATX Case (High Airflow Front Panel, Tempered Glass Side Panel, Spacious Interior, Two 120 mm Fans Included), Black
+* be quiet! Pure Power 12 850W Power Supply, 80 Plus® Gold Efficiency, ATX 3.1 with Full Support for PCIe 5.1 GPUs, Extraordinarily Quiet 120 mm be quiet! Fan, LLC Technology
+* be quiet! Pure Rock 2 Black, CPU Cooler, 150 W TDP, Pure Wings 2 120 mm PWM, 4 x 6 mm Heat Pipes, Asymmetric Design, Single Tower, BK007
 
 ## Local model profile
 
