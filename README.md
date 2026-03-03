@@ -51,3 +51,10 @@ By default the app uses an OpenAI-compatible API client. Configure in `.env`:
 - Starting with one source document is fine for Q&A.
 - For stronger code generation/debugging, add examples, tests, and compiler/tool feedback over time.
 - DOCX with headings/TOC is preferred because section-aware chunking improves retrieval relevance.
+
+## Host computer specs
+
+* AMD Ryzen 9 5950X Processor
+* ASUS Prime A520M-K Motherboard Socket AM4
+* Corsair Vengeance LPX 64GB (2x32GB) DDR4 3200MHz C16
+* Intenso Internal M.2 SSD SATA III Top, 512 GB, 520 MB/s
