@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 @dataclass(frozen=True)
 class Settings:
-    pdf_path: Path
+    source_path: Path
     index_dir: Path
     chunk_size: int
     chunk_overlap: int
@@ -25,7 +25,7 @@ def load_settings() -> Settings:
     load_dotenv()
 
     return Settings(
-        pdf_path=Path(os.getenv("PDF_PATH", "data/knowledge.pdf")),
+        source_path=Path(os.getenv("SOURCE_PATH", os.getenv("PDF_PATH", "data/polyforth-llm.docx"))),
         index_dir=Path(os.getenv("INDEX_DIR", "index")),
         chunk_size=int(os.getenv("CHUNK_SIZE", "1200")),
         chunk_overlap=int(os.getenv("CHUNK_OVERLAP", "150")),
@@ -40,7 +40,7 @@ def load_settings() -> Settings:
             "SYSTEM_PROMPT",
             (
                 "You are a precise programming language tutor and coding assistant. "
-                "Use retrieved context where possible and cite sources as [pX]."
+                "Use retrieved context where possible and cite sources as [src]."
             ),
         ),
     )
