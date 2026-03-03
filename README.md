@@ -4,6 +4,9 @@ A minimal RAG assistant for polyForth (or any language) backed by a single `.pdf
 
 Implementation checklist: see [implementation-agent](IMPLEMENTATION.md).
 Teaching mode docs: [teaching](TEACHING_README.md) and [implementation-teaching](TEACHING_IMPLEMENTATION.md).
+Project roadmap: [roadmap](docs/ROADMAP.md).
+Teaching benchmark: [benchmark-v1](evaluation/teaching-benchmark.md).
+Env presets: [profiles](profiles/README.md).
 
 ## What this repo now does
 
