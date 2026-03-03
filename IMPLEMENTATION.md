@@ -2,6 +2,52 @@
 
 This guide defines the next steps after your host computer is ready.
 
+## Hardware guidance first
+
+Current host configuration:
+
+- AMD Ryzen 9 5950X
+- 64GB DDR4 RAM
+- 512GB SSD
+- Debian Linux + KDE Plasma
+- Radeon RX 6400 (4GB VRAM)
+
+Advice for current configuration:
+
+1. This is good for local ingestion, embeddings, FAISS indexing, and retrieval.
+2. Use hosted LLM API for best answer quality and speed today.
+3. The RX 6400 helps desktop responsiveness but 4GB VRAM is below practical local LLM GPU targets.
+4. If fully local, use compact quantized models and expect higher latency than hosted/API inference.
+5. Avoid 30B-class local models for interactive use.
+
+Recommended hardware profile:
+
+1. CPU: modern 12+ core processor.
+2. RAM: 64GB minimum (128GB preferred if running larger local models).
+3. Storage: 1TB to 2TB NVMe SSD.
+4. GPU: 24GB VRAM minimum for practical local coding assistants.
+5. GPU preferred target: 48GB+ VRAM for larger models and longer context windows.
+
+Current vs recommended correlation:
+
+| Component | Current | Recommended | Status | Impact |
+|---|---|---|---|---|
+| CPU | Ryzen 9 5950X (16 cores) | Modern 12+ cores | Meets/Exceeds | Strong for ingestion, embeddings, retrieval, and orchestration. |
+| RAM | 64GB DDR4 | 64GB min (128GB preferred) | Meets minimum | Good baseline; 128GB helps larger local models and bigger contexts. |
+| Storage | 512GB SSD | 1TB to 2TB NVMe | Gap | Main bottleneck for local model files, caches, and future growth. |
+| GPU | Radeon RX 6400 (4GB) | 24GB min, 48GB+ preferred | Gap | Discrete GPU present, but VRAM is far below practical local coding-model targets. |
+
+Practical conclusion:
+
+1. You are ready now for local RAG and hosted LLM generation.
+2. For fully local coding assistant quality, prioritize storage upgrade first, then add GPU.
+
+Incremental improvements (in priority order):
+
+1. Increase storage to 1TB to 2TB NVMe for model files/cache/indexes.
+2. Add discrete GPU with at least 24GB VRAM (48GB+ preferred for larger models).
+3. After GPU upgrade, evaluate larger code models and longer context settings.
+
 ## Target OS
 
 - Debian Linux
@@ -123,7 +169,8 @@ LLM_MODEL=...
 
 Notes:
 
-- For current CPU-only setup, prefer smaller quantized models for local deployment.
+- With RX 6400 4GB, prefer hosted inference for best results.
+- If local-only, stick to compact quantized models and smaller context settings.
 - For best quality now, use hosted code-capable instruct model.
 
 ## Phase 4: First acceptance test

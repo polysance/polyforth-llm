@@ -2,7 +2,8 @@
 
 A minimal RAG assistant for polyForth (or any language) backed by a single `.pdf` or `.docx` knowledge source.
 
-Implementation checklist: see [IMPLEMENTATION.md](IMPLEMENTATION.md).
+Implementation checklist: see [implementation-agent](IMPLEMENTATION.md).
+Teaching mode docs: [teaching](TEACHING_README.md) and [implementation-teaching](TEACHING_IMPLEMENTATION.md).
 
 ## What this repo now does
 
@@ -74,21 +75,24 @@ By default the app uses an OpenAI-compatible API client. Configure in `.env`:
 
 ## Local model profile
 
-### Recommendation for current setup (no discrete GPU listed)
+### Recommendation for current setup (RX 6400 4GB)
 
 Use this architecture now:
 
 1. Keep retrieval local (current FAISS + sentence-transformers setup).
-2. Use a smaller local instruct/code model (quantized 7B to 16B class) for generation.
-3. Prefer moderate context windows for speed/latency.
+2. Use hosted LLM API for generation by default.
+3. If fully local, prefer very small quantized models due to 4GB VRAM.
+4. Prefer moderate context windows for speed/latency.
 
 Suggested starting model class:
 
-- DeepSeek-Coder-V2-Lite (quantized) or a comparable 7B to 14B code-instruct model.
+- Hosted: code-capable instruct model via API.
+- Local fallback: compact quantized code model where memory allows.
 
 Not recommended on current setup:
 
-- 30B-class code models for interactive usage, because CPU-only latency will usually be too high.
+- 30B-class local code models for interactive usage.
+- Expecting the 4GB GPU to run mid/large LLMs effectively.
 
 ### Upgrade path
 
