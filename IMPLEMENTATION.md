@@ -7,6 +7,7 @@ This guide defines the next steps after your host computer is ready.
 1. Cooling direction:
    - Do not rely on DIY wire clip retention as primary mounting.
    - Prefer a no-clip CPU cooling path (240mm AIO) for reliability and lower build risk.
+   - Here is the installation [guide](https://www.corsair.com/us/en/explorer/diy-builder/cpu-coolers/icue-link-titan-240-360-rx-lcd/#p-data-block-key8y3o72-prepare-the-motherboard-for-installationp).
 2. Inference strategy:
    - Use local RAG + hosted LLM as the default operating mode.
    - Use local-lite inference only as fallback on constrained hardware.
