@@ -205,7 +205,7 @@ cp .env.example .env
 4. Confirm `SOURCE_PATH` points to your file:
 
 ```env
-SOURCE_PATH=data/polyforth-llm.docx
+SOURCE_PATH=data/polyForth-llm.docx
 ```
 
 5. Confirm embedding model uses local path:

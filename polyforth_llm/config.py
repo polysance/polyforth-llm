@@ -25,7 +25,7 @@ def load_settings() -> Settings:
     load_dotenv()
 
     return Settings(
-        source_path=Path(os.getenv("SOURCE_PATH", os.getenv("PDF_PATH", "data/polyforth-llm.docx"))),
+        source_path=Path(os.getenv("SOURCE_PATH", os.getenv("PDF_PATH", "data/polyForth-llm.docx"))),
         index_dir=Path(os.getenv("INDEX_DIR", "index")),
         chunk_size=int(os.getenv("CHUNK_SIZE", "1200")),
         chunk_overlap=int(os.getenv("CHUNK_OVERLAP", "150")),

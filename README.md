@@ -38,7 +38,7 @@ python scripts/download_embedding_model.py
 
 ### 2) Add your source document
 
-Default is `data/polyforth-llm.docx` (set `SOURCE_PATH` in `.env` if different).
+Default is `data/polyForth-llm.docx` (set `SOURCE_PATH` in `.env` if different).
 
 ### 3) Build the index
 
