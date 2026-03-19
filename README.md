@@ -7,9 +7,17 @@ A minimal RAG assistant for polyForth (or any language) backed by a single `.pdf
 * Project roadmap: [roadmap](docs/ROADMAP.md).
 * Teaching benchmark: [benchmark-v1](evaluation/teaching-benchmark.md).
 * Env presets: [profiles](profiles/README.md).
+* RAG literature hub: [literature](literature/README.md).
 * Local-first build path: [local-first](docs/LOCAL_FIRST_BUILD.md).
+* Posterior build notes: [build-notes](docs/POSTERIOR_BUILD_NOTES.md).
 * Current strategy and forward execution order: see top of [implementation-agent](IMPLEMENTATION.md).
 * Public testing deploy guide: [cloudflare-tunnel](DEPLOYMENT_CLOUDFLARE.md).
+
+## Why RAG Matters
+
+Retrieval-Augmented Generation (RAG) separates knowledge access from answer generation: first retrieve evidence, then generate. This makes systems more auditable, since answers can cite source chunks rather than relying only on opaque model memory. For teaching workloads, this improves trust, exposes missing-context cases, and gives a concrete way to evaluate hallucination risk. A local-first RAG stack also turns AI from a black box into an inspectable pipeline where chunking, retrieval ranking, prompts, and model choice can each be measured and tuned. The literature hub in this repo maps these ideas from theory to operations and pedagogy:
+
+- `literature/README.md`
 
 ## What this repo now does
 
@@ -80,46 +88,3 @@ By default the app uses an OpenAI-compatible API client. Configure in `.env`:
 - For stronger code generation/debugging, add examples, tests, and compiler/tool feedback over time.
 - DOCX with headings/TOC is preferred because section-aware chunking improves retrieval relevance.
 - Default embedding model path is local: `models/all-MiniLM-L6-v2`.
-
-## Host computer specs
-
-* AMD Ryzen 9 5950X Processor
-* ASUS Prime A520M-K Motherboard Socket AM4
-* Corsair Vengeance LPX 64GB (2x32GB) DDR4 3200MHz C16
-* Intenso Internal M.2 SSD SATA III Top, 512 GB, 520 MB/s
-* Debian Linux with KDE Plasma desktop
-* XFX Speedster SWFT105 Radeon RX 6400 Gaming Graphics Card with 4GB GDDR6, AMD RDNA™ 2 (RX-64XL4SFG2)
-* Corsair 4000D Airflow Tempered Glass Mid-Tower ATX Case
-* be quiet! Pure Power 12 850W Power Supply, 80 Plus® Gold Efficiency, ATX 3.1 with Full Support for PCIe 5.1 GPUs
-* Corsair 240mm AIO Liquid CPU Cooler (AM4 compatible)
-
-## Local model profile
-
-### Recommendation for current setup (RX 6400 4GB)
-
-Use this architecture now:
-
-1. Keep retrieval local (current FAISS + sentence-transformers setup).
-2. Use hosted LLM API for generation by default.
-3. If fully local, prefer very small quantized models due to 4GB VRAM.
-4. Prefer moderate context windows for speed/latency.
-
-Suggested starting model class:
-
-- Hosted: code-capable instruct model via API.
-- Local fallback: compact quantized code model where memory allows.
-
-Not recommended on current setup:
-
-- 30B-class local code models for interactive usage.
-- Expecting the 4GB GPU to run mid/large LLMs effectively.
-
-### Upgrade path
-
-1. Storage first: move to 1TB to 2TB NVMe (model files and cache grow quickly).
-2. Then GPU: 24GB VRAM minimum for practical local coding assistants, 48GB+ preferred for larger models and longer contexts.
-
-### Practical deployment split
-
-- Best quality now: local RAG + hosted LLM API.
-- Best fully-local now: local RAG + quantized 7B to 16B model.
