@@ -54,3 +54,4 @@ How does DUP differ from OVER?
 1. Answers should cite retrieved sources, e.g. `[section:...]` or `[pX]`.
 2. If context is missing, tutor should say what is missing.
 3. Explanations should be short, progressive, and focused on fundamentals.
+4. Optimizations are an open question but will use native-built tools.
