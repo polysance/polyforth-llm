@@ -1,4 +1,4 @@
-# polyforth-llm
+# Retrieval-Augmented Generation system for polyForth using local FAISS retrieval + local Ollama inference
 
 A minimal RAG assistant for polyForth (or any language) backed by a single `.pdf` or `.docx` knowledge source.
 
