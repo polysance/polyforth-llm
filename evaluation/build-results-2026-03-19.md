@@ -121,3 +121,46 @@ Result:
   - Configure real `LLM_API_KEY` in `.env`.
   - Run `python scripts/teaching_chat.py`.
   - Execute `evaluation/teaching-benchmark.md` and save `evaluation/results-YYYY-MM-DD.md`.
+
+---
+
+## Local Inference Continuation - 2026-03-19
+
+Status: **SUCCESS (local model path operational)**
+
+### Ollama local server checks
+1. Confirmed local model present:
+   - `qwen2.5-coder:7b-instruct-q4_K_M`
+2. Confirmed OpenAI-compatible endpoint responds:
+   - `GET http://127.0.0.1:11434/v1/models`
+3. Confirmed chat completion endpoint responds:
+   - `POST http://127.0.0.1:11434/v1/chat/completions`
+
+### Cloud setting applied
+Configured Ollama server setting:
+- `~/.ollama/server.json`
+- `{ "disable_ollama_cloud": true }`
+
+### Runtime issue found and fixed
+Problem:
+- `teaching_chat.py` failed with:
+  - `TypeError: Client.__init__() got an unexpected keyword argument 'proxies'`
+Cause:
+- `openai==1.51.2` incompatible with installed `httpx==0.28.1` behavior.
+Fix:
+- Pinned `httpx==0.27.2` in `requirements.txt` and reinstalled.
+
+### Teaching mode smoke test (local model)
+Command pattern:
+- `. .venv/bin/activate`
+- inline env vars to Ollama endpoint/model
+- `python scripts/teaching_chat.py`
+
+Result:
+1. CLI started successfully (`polyforth-llm teaching chat ready.`).
+2. `/lesson What does DUP do?` returned a full answer.
+3. Process exited cleanly after `exit`.
+
+### Notes for quality
+- Local path is now working end-to-end.
+- First response quality was acceptable operationally, but citation discipline should be validated against benchmark before adoption.
