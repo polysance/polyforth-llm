@@ -7,6 +7,7 @@ A minimal RAG assistant for polyForth (or any language) backed by a single `.pdf
 * Project roadmap: [roadmap](docs/ROADMAP.md).
 * Teaching benchmark: [benchmark-v1](evaluation/teaching-benchmark.md).
 * Env presets: [profiles](profiles/README.md).
+* Local-first build path: [local-first](docs/LOCAL_FIRST_BUILD.md).
 * Current strategy and forward execution order: see top of [implementation-agent](IMPLEMENTATION.md).
 * Public testing deploy guide: [cloudflare-tunnel](DEPLOYMENT_CLOUDFLARE.md).
 

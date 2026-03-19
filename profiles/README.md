@@ -14,6 +14,10 @@ cp profiles/.env.teaching.example .env
 
 Then edit API/model values as needed.
 
+For local-first round-one execution details and checkpoints, see:
+
+- `docs/LOCAL_FIRST_BUILD.md`
+
 ## Profile intent
 
 1. hosted:
