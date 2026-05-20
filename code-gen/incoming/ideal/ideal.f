@@ -1,13 +1,17 @@
 ( Ideal in Forth)
 
+[UNDEFINED] EMPTY [IF]
+: EMPTY ( -- ) ;
+[THEN]
+
 ( 4821 LIST)
 ( This is the "minimalist" version for x86, with no "hooks" for future unknown complications. Will make conventions that should survive into more complex versions, but this one will be a "floor" especially in its native chip version. Each sort of "thing" will have a numeric handle starting at 1. The zero handle will mean "null" or undefined. BOREDOMLEVEL is bias between self-satisfaction & disengagement.)
 
 ( IDEAL Simplified) EMPTY
 
-( Database) 1 FH 2 FH THRU ( Exist) 3 FH 5 FH THRU
+\ ( Database) 1 FH 2 FH THRU ( Exist) 3 FH 5 FH THRU
 
-2 BOREDOMLEVEL !
+\ 2 BOREDOMLEVEL !
 : .EXP "EXP TYPE ; : .RES "RES TYPE ;
 : .INT ( i) INTS U@ 256 /MOD SWAP .EXP ." ->" .RES SPACE ;
 : .MOOD ( i) "MOOD TYPE ;
@@ -64,6 +68,8 @@ VARIABLE PREVEXP    VARIABLE CUREXP
 VARIABLE MOOD       VARIABLE #SATIS     VARIABLE BOREDOMLEVEL
 
 VARIABLE EXPECTED   VARIABLE RESULT     VARIABLE CURINT
+
+2 BOREDOMLEVEL !
 
 ( 4825 LIST)
 ( PREDICT finds the newest interaction employing the given experiment highest ordinal returning handle for its result. If no such interaction exists, returns null result. Because the result of each experiment is always the same, this is appearances only. ENACT performs experiment CUREXP. E1->R1, E2->R2. OTHEREXP finds the experiment with *highest* ordinal differing from the one given. The prototype given returned the *LOWEST* ordinal, but no obvious reason why this would be preferable to the highest. Second version uses highest instead because that covers the case of defaulting to null when there’s no other experiment than the one being enacted.)
